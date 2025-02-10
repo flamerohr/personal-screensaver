@@ -39,6 +39,9 @@
 
 <div class="background" style="background-image:{image}">
 	<Clock class="clock" />
+	{#each images as image}
+		<link rel="preload" href={image} as="image" />
+	{/each}
 </div>
 
 <style>
