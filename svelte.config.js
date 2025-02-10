@@ -9,7 +9,8 @@ const config = {
 
 	kit: {
 		// https://svelte.dev/docs/kit/adapter-static
-		adapter: adapter({ pages: 'docs', assets: 'docs' })
+		adapter: adapter({ pages: 'docs', assets: 'docs' }),
+		paths: { relative: false }
 	}
 };
 
