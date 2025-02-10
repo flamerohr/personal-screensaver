@@ -4,9 +4,9 @@
 
 	let { class: className = '' } = $props();
 
-	let now = new Date();
+	let now = $state(new Date());
 	let time = $derived(format(now, 'h:mm aaa'));
-	let date = $derived(format(now, 'ccc, do MMM'));
+	let date = $derived(format(now, 'ccc, d MMM'));
 
 	const interval = setInterval(() => (now = new Date()), 15 * 1000);
 
@@ -23,7 +23,7 @@
 <style>
 	.clock {
     --size: 42px;
-    --size: min(20vh, 10vw);
+    --size: min(15vh, 7.5vw);
 		font-size: var(--size);
 		color: #ccc;
 

@@ -13,7 +13,7 @@
 </script>
 
 <script lang="ts">
-	import Clock from '$lib/Clock.svelte';
+	import Clock from '$lib/clock.svelte';
 
 	import './styles.css';
 	import { onDestroy, onMount } from 'svelte';
@@ -21,12 +21,12 @@
 	let image: string | null = $state(null);
 
 	const refreshBackground = () => {
-		const index = Math.round(new Date().getTime() / (15 * 60 * 1000)) % images.length;
+		const index = Math.floor(new Date().getTime() / (15 * 60 * 1000)) % images.length;
 
 		image = 'url(' + images[index] + ')';
 	};
 
-	const backgroundInterval = setInterval(refreshBackground, 5 * 1000);
+	const backgroundInterval = setInterval(refreshBackground, 30 * 1000);
 
 	onMount(() => {
 		refreshBackground();
