@@ -10,7 +10,7 @@ const config = {
 	kit: {
 		// https://svelte.dev/docs/kit/adapter-static
 		adapter: adapter({ pages: 'docs', assets: 'docs' }),
-		paths: { relative: false }
+		paths: { base: '/personal-screensaver' }
 	}
 };
 
