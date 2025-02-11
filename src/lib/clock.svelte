@@ -8,7 +8,12 @@
   let time = $derived(format(now, 'h:mm aaa'));
   let date = $derived(format(now, 'ccc, d MMM'));
 
-  const interval = setInterval(() => (now = new Date()), 15 * 1000);
+  let interval;
+  $effect(() => {
+    clearInterval(interval);
+    
+    setInterval(() => (now = new Date()), 15 * 1000);
+  });
 
   onDestroy(() => {
     clearInterval(interval);
