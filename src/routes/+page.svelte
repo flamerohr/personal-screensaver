@@ -41,7 +41,7 @@
 </script>
 
 <div class="container">
-  <Clock class="clock" />
+  <Clock />
   <div class="background" style="background-image:url({image})"></div>
   {#each nextImages as image}
     <link rel="preload" href={image} as="image" />
@@ -53,6 +53,7 @@
     position: relative;
     height: 100%;
   }
+
   .background {
     position: absolute;
     top: 0;
@@ -67,8 +68,8 @@
 
   :global(.clock) {
     position: absolute;
-    bottom: 2rem;
-    right: 1rem;
-		z-index: 3;
+    bottom: 1vh;
+    right: 1vw;
+    z-index: 3;
   }
 </style>
