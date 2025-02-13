@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onDestroy } from 'svelte';
   import { format } from 'date-fns';
 
   let { class: className = '' } = $props();
@@ -8,15 +7,10 @@
   let time = $derived(format(now, 'h:mm aaa'));
   let date = $derived(format(now, 'ccc, d MMM'));
 
-  let interval;
   $effect(() => {
-    clearInterval(interval);
-    
-    setInterval(() => (now = new Date()), 15 * 1000);
-  });
+    const interval = setInterval(() => (now = new Date()), 15 * 1000);
 
-  onDestroy(() => {
-    clearInterval(interval);
+    return () => clearInterval(interval);
   });
 </script>
 
@@ -27,8 +21,8 @@
 
 <style>
   .clock {
-    --size: 42px;
-    --size: min(15vh, 7.5vw);
+    --size: 42pt;
+    --size: max(min(15vh, 7.5vw, 200pt), 42pt);
     font-size: var(--size);
     color: #ccc;
 
@@ -36,6 +30,8 @@
     background: radial-gradient(circle, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
     border-radius: calc(var(--size) / 2);
     padding: calc(var(--size) / 10) calc(var(--size) / 5);
+
+    text-align: end;
   }
   .date {
     font-size: calc(var(--size) / 2);
